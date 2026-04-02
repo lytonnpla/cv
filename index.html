@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYTON FREDRICK DIAS PINTO MUSTAFA</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+body {font-family:'Poppins', sans-serif; margin:0; background:linear-gradient(135deg,#e6ebe8,#cdd7d3); color:#1f2933; scroll-behavior:smooth; position:relative;} 
+body::after {content:""; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3); pointer-events:none; z-index:1;} 
+body > * {position:relative; z-index:1;} 
+h1, h2, h3, p, span, button {position:relative; z-index:2;}
+header {background:rgba(47,79,79,0.9); backdrop-filter:blur(10px); color:white; padding:20px; display:flex; align-items:center; position:sticky; top:0; z-index:10;}
+.profile {display:flex; align-items:center;}
+.profile img {width:110px; height:110px; border-radius:50%; border:3px solid #9fb4ad; margin-right:20px; object-fit:cover;}
+
+.marquee {
+  background:#3a5f5f;
+  color:#fff;
+  overflow:hidden;
+  white-space:nowrap;
+
+  position: fixed;   /* 🔥 mantém fixo */
+  top: 200px;         /* abaixo do header */
+  left: 0;
+  width: 100%;
+
+  z-index: 999;
+  transition: box-shadow 0.3s ease;
+}
+.marquee::before, .marquee::after {
+  content:"";
+  position:absolute;
+  top:0;
+  width:80px;
+  height:100%;
+  z-index:2;
+  pointer-events:none;
+}
+.marquee::before {
+  left:0;
+  background:linear-gradient(to right, #3a5f5f 0%, transparent 100%);
+}
+.marquee::after {
+  right:0;
+  background:linear-gradient(to left, #3a5f5f 0%, transparent 100%);
+}
+.marquee.scrolled {box-shadow:0 4px 15px rgba(0,0,0,0.25);} 
+.marquee .track {
+  display:inline-flex;
+  gap:50px;
+  animation:scroll 40s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+.marquee span {white-space:nowrap;}
+@keyframes scroll {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+section {padding:25px 20px; max-width:1000px; margin:auto;}
+
+.cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+.card {background:white; padding:15px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); cursor:pointer; transition:0.3s;}
+.card:hover {transform:translateY(-5px) scale(1.03);} 
+.card img {width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:8px;}
+.card h3, .card p {margin:4px 0;}
+
+button {padding:12px 18px; background:#4a7c74; color:white; border:none; border-radius:10px; cursor:pointer; margin-right:10px;}
+button:hover {background:#2f5d57;}
+
+.modal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(5px);
+
+  z-index: 1000; /* 🔥 garante que cobre tudo */
+}
+.modal-content {background:white; padding:25px; margin:10% auto; width:60%; border-radius:15px; animation:fadeIn 0.3s;}
+@keyframes fadeIn {from{opacity:0; transform:translateY(-20px);}to{opacity:1; transform:translateY(0);}}
+.close {float:right; cursor:pointer; font-size:22px;}
+
+.skills {display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:20px;}
+.skill {padding:10px 18px; background:#a8bdb7; border-radius:30px; opacity:0.7;}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+footer {text-align:center; padding:40px; background:#2f4f4f; color:white;}
+</style>
+
+<script>
+function openModal(id){ document.getElementById(id).style.display='block'; }
+function closeModal(id){ document.getElementById(id).style.display='none'; }
+function scrollToGallery(){ document.getElementById('gallery').scrollIntoView({behavior:'smooth'}); }
+function openGalleryModal(src){
+ document.getElementById('galleryModalImg').src = src;
+ document.getElementById('galleryModal').style.display='block';
+}
+function closeGalleryModal(){ document.getElementById('galleryModal').style.display='none'; }
+window.addEventListener('scroll', function(){
+  const marquee = document.querySelector('.marquee');
+  if(window.scrollY > 10){
+    marquee.classList.add('scrolled');
+  } else {
+    marquee.classList.remove('scrolled');
+  }
+});
+</script>
+</head>
+<body>
+
+<header>
+<div class="profile">
+<img src="photo.jpg">
+<div>
+<h1>LYTON FREDRICK DIAS PINTO MUSTAFA</h1>
+<p><h2>IT Specialist | Bachelor of Science in Computer Science</h2></p>
+<p>Native Portugues | Fluent English</p>
+</div>
+</div>
+</header>
+
+<div class="marquee">
+  <div class="track">
+    <span>Results-driven IT Specialist with 20+ years of experience in IT infrastructure, systems administration, and end-user support in international and humanitarian environments. Strong expertise in Microsoft 365, Azure, network security, and multi-OS environments (Windows, Linux, macOS). Proven ability to ensure system reliability, strengthen cybersecurity, and support business-critical operations in both office and field settings.</span>
+    <span>Results-driven IT Specialist with 20+ years of experience in IT infrastructure, systems administration, and end-user support in international and humanitarian environments. Strong expertise in Microsoft 365, Azure, network security, and multi-OS environments (Windows, Linux, macOS). Proven ability to ensure system reliability, strengthen cybersecurity, and support business-critical operations in both office and field settings.</span>
+  </div>
+</div>
+
+<section style="padding-bottom:10px;">
+<button onclick="window.open('CV.pdf')">Download CV</button>
+<button onclick="scrollToGallery()">View Gallery</button>
+</section>
+
+<section style="padding-top:10px;">
+<h2>Professional Experience</h2>
+<div class="cards">
+
+<div class="card" onclick="openModal('exp1')">
+<img src="logo1.jpeg">
+<h3>ACDI/VOCA</h3>
+<p>2023 - 2025</p>
+<p>MIS/IT Specialist</p>
+</div>
+
+<div class="card" onclick="openModal('exp2')">
+<img src="logo2.jpeg">
+<h3>UCM - Faculdade de Educação e Comunicação</h3>
+<p>2010 - 2023</p>
+<p>IT Coordinator</p>
+</div>
+
+
+<div class="card" onclick="openModal('exp3')">
+<img src="logo3.jpeg">
+<h3>FRESH, LDA</h3>
+<p>2001 - 2007</p>
+<p>IT Support Analyst</p>
+</div>
+
+
+<div class="card" onclick="openModal('exp4')">
+<img src="logo4.jpeg">
+<h3>Save the children</h3>
+<p>2000 - 2013</p>
+<p>IT Support Reprentative</p>
+</div>
+
+
+<div class="card" onclick="openModal('exp5')">
+<img src="logo5.jpeg">
+<h3>IT Services, lda</h3>
+<p>2001 - 2007</p>
+<p>Technical IT Support Technician</p>
+</div>
+
+<div class="card" onclick="openModal('exp6')">
+<img src="logo7.jpeg">
+<h3>Clave do Sol School</h3>
+<p>1998 - 2004</p>
+<p>English language teacher</p>
+</div>
+
+
+</section>
+
+<div id="exp1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('exp1')">&times;</span><h3>ACDI/VOCA</h3><p>Managed and maintained IT infrastructure ensuring high availability and performance.</p><p>Administered Microsoft 365 (Exchange Online, SharePoint,Teams) and Azure services.</p><p>Supported Windows, Linux, and macOS environments across office and field operations.</p><p>Implemented and managed MIS systems using SharePoint.</p><p>Strengthened cybersecurity practices and user awareness programs.</p><p>Coordinated IT procurement, asset management, and vendor relations.</p><p>Provided advanced technical support (Level 2/3) and incident resolution.</p><p>Develop required M&E tools using open-source mobile data collection solutions.</p><p>Provide training to Project MIS users on the various MIS applications and tools.</p></div></div>
+
+<div id="exp2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('exp2')">&times;</span><h3>UCM - Faculdade de Educação e Comunicação</h3><p>Led administration of networks, servers, and institutional IT systems.</p><p>Supervised IT team and coordinated infrastructure upgrades.</p><p>Monitored system performance, availability, and security compliance.</p><p>Implemented improvements in IT service delivery and operational efficiency.</p><p>Supported data systems and reporting tools for decision-making.</p><p>Set up, optimized, and managed network equipment and infrastructure.</p><p>Improved job tasks and mentored junior team members on best practices and standards.</p><p>Applied successful project management techniques to enable project delivery within budgetary and time constraints.</p><p>Coordinated, scheduled, and executed in-depth data entry projects.</p></div></div>
+
+<div id="exp3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('exp3')">&times;</span><h3>FRESH, LDA</h3><p>Management, cleaning, and analysis of institutional data.</p><p>Digitization and organization of databases.</p><p>Development of reports and support for decision-making.</p><p>Ensuring the integrity and confidentiality of information.</p><p>Created and maintained spreadsheets using Excel.</p><p>Examined data to detect and rectify deﬁciencies or errors.</p><p>Performed regular backup operations to save data and avoid loss.</p><p>Managed ERP BuildSmart.</p><p>Technical support in hardware e software in level 1/2 incidents.</p></div></div>
+
+<div id="exp4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('exp4')">&times;</span><h3>FEDERATION SAVE THE CHILDREN</h3><p>Delivered technical support across systems, networks and applications.</p><p>Managed installations, updates, backups, and troubleshooting.</p><p>Documented incidents and collaborated with international IT teams.</p><p>Communicated technical computer information to non-technical audiences by providing simpliﬁed presentations and demonstrations.</p><p>Kept computer hardware in excellent working condition through regular maintenance and inspections.</p><p>Conﬁgured networks to meet performance requirements.</p><p>Maintained and repaired peripheral equipment connected to laptops and desktops.</p><p>Windows Server datacenter.</p></div></div>
+
+<div id="exp5" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('exp5')">&times;</span><h3>IT SERVICES, LDA</h3><p>Computer maintenance and software installation.</p><p>Technical support and user assistance.</p><p>Documented incidents and collaborated with international IT teams.</p><p>Managed complaints with calm, clear communication and problem-solving.</p><p>Optimized team training and staff development.</p><p>Supervised the work of contracted employees to deliver work on schedule.</p><p>Managed payroll accuracy using speciﬁc checklists and quality review processes.</p><p>Updated databases while complying with GDPR.</p><p>Troubleshooting.</p></div></div>
+
+<div id="exp6" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('exp6')">&times;</span><h3>CLAVE DO SOL SCHOOL</h3><p>Carried out teacher support functions, performing coaching and counseling to achieve optimum student outcomes.</p><p>Planned, designed, and produced high-quality teaching materials, increasing student productivity.</p><p>Adapted teaching style for students with Special Educational Needs and Disabilities.</p><p>Planned lessons with dynamic discussions and exercises to promote engagement.</p><p>Evaluated students' comprehension of lessons through relevant test questions.</p><p>Monitored students' attendance and behavior and followed up in case of negative changes.</p><p>Discussed pupils' progress with parents and carers, building open and honest relationships.</p></div></div>
+
+<section>
+<h2>Courses & Training</h2>
+<div class="cards">
+<div class="card"><img src="Course1.jpeg"><p>Microsoft Azure Administrator (AZ-104)</p></div>
+<div class="card"><img src="course2.png"><p>Cisco CCNA (ICND v3)</p></div>
+<div class="card"><img src="course3.png"><p>Essentials of IT Service Management and Infrastructure Library Level 4</p></div>
+<div class="card"><img src="course4.jpeg"><p>DevOps – Application Lifecycle Management (2025)</p></div>
+<div class="card"><img src="course5.png"><p>Kobotoolbox and Data collection tools</p></div>
+<div class="card"><img src="course6.jpeg"><p>DataBase management Systems</p></div>
+<div class="card"><img src="course7.png"><p>SPSS - Statistics technical support</p></div>
+<div class="card"><img src="course8.webp"><p>Monitoring and Evaluation</p></div>
+<div class="card"><img src="course9.webp"><p>Scrum</p></div>
+<div class="card"><img src="course10.jpeg"><p>Kobo Toolbox & XLSForm (2022)</p></div>
+<div class="card"><img src="Cybersecurity.png"><p>Cibersecurity Administration</p></div>
+<div class="card"><img src="ModernAI.png"><p>Introduction to Modern AI</p></div>
+</div>
+</section></div>
+
+<section id="gallery">
+<h2>Gallery</h2>
+<div class="cards gallery">
+<img src="IMG_9795.JPG" onclick="openGalleryModal(this.src)">
+<img src="IMG_20170216_113833.jpg" onclick="openGalleryModal(this.src)">
+<img src="DSC_0034.JPG" onclick="openGalleryModal(this.src)">
+<img src="SAM_0587.JPG" onclick="openGalleryModal(this.src)">
+<img src="SAM_0584.JPG" onclick="openGalleryModal(this.src)">
+<img src="SAM_0587.JPG" onclick="openGalleryModal(this.src)">
+<img src="20240624_160606.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240520_162031.jpg" onclick="openGalleryModal(this.src)">
+<img src="IMG_20170208_160748_842.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240520_162052.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240520_162108.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240524_011421.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240524_133954.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240624_160549.jpg" onclick="openGalleryModal(this.src)">
+<img src="IMG_4798.JPG" onclick="openGalleryModal(this.src)">
+<img src="20240701_153829.jpg" onclick="openGalleryModal(this.src)">
+<img src="20240904_173643.jpg" onclick="openGalleryModal(this.src)">
+<img src="20241021_220840.jpg" onclick="openGalleryModal(this.src)">
+<img src="DSC_0016.JPG" onclick="openGalleryModal(this.src)">
+<img src="DSC_0208.JPG" onclick="openGalleryModal(this.src)">
+<img src="IMG_4798.JPG" onclick="openGalleryModal(this.src)">
+</div>
+</section>
+
+<div id="galleryModal" class="modal">
+  <div class="modal-content" style="text-align:center;">
+    <span class="close" onclick="closeGalleryModal()">&times;</span>
+    <img id="galleryModalImg" style="max-width:100%; border-radius:10px;">
+  </div>
+</div>
+
+<footer>
+<h3>Skills</h3>
+<div class="skills">
+<span class="skill">Azure</span>
+<span class="skill">Microsoft 365</span>
+<span class="skill">Networking</span>
+<span class="skill">Cybersecurity</span>
+<span class="skill">Linux</span>
+<span class="skill">Windows Server</span>
+<span class="skill">Power BI</span>
+
+<span class="skill">macOS</span>
+<span class="skill">Fedora</span>
+<span class="skill">Cisco</span>
+<span class="skill">Lidership</span>
+<span class="skill">DataBase</span>
+<span class="skill">Agile and DevOps</span>
+
+<span class="skill">ITIL4</span>
+<span class="skill">Communication</span>
+<span class="skill">Team management</span>
+<span class="skill">Critical thinking</span>
+<span class="skill">Data collection tools</span>
+</div>
+<p>WhatsAapp, Voice, Text: +258 86/84 243 9970 | E-mail: lyton.lfjunior@gmail.com | LinkedIn:
+  <a href="https://www.linkedin.com/in/lyton571524" target="_blank">
+    🔗 Lyton Fredrick MUSTAFA
+  </a></p>
+<p>© 2026 Lyton Mustafa | IT Portfolio</p>
+</footer>
+
+</body>
+</html>
